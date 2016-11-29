@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_camara" type="id">camara</item>
+    <item name="hacer_nota" type="id">hacer_nota</item>
+    <item name="hacer_lista" type="id">hacer_lista</item>
+    <item name="Ver_notas" type="id">Ver_notas</item>
+    <item name="Ver_listas" type="id">Ver_listas</item>
+
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hacer_nota"
+        android:orderInCategory="100"
+        android:title="@string/hacer_nota"
+        android:icon="@drawable/ic_nota"
+        />
+
+    <item
+        android:id="@id/hacer_lista"
+        android:orderInCategory="100"
+        android:title="@string/hacer_lista"
+        android:icon="@drawable/ic_listas"
+    />
+
+    <item
+        android:id="@+id/Ver_notas"
+        android:orderInCategory="100"
+        android:title="@string/ver_notas"
+        />
+
+
+    <item
+        android:id="@+id/Ver_listas"
+        android:orderInCategory="100"
+        android:title="@string/ver_listas"
+
+        />
+
+
+</menu>

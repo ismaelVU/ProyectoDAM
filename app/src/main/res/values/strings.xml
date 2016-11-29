@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Quip</string>
+    // Strings botones
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    // Strings dialogo borrar
+    <string name="mensaje_confirm_borrar">¿Seguro que quieres borrar esta nota?</string>
+    <string name="mensaje_confirm_borrar_lista">¿Seguro que quieres borrar esta lista?</string>
+    <string name="etiqueta_dialogo_borrar">Eliminar: </string>
+    // nota
+    <string name="nota">Nota</string>
+    <string name="titulo">Titulo</string>
+    <string name="action_camara">camara</string>
+    <string name="action_prueba">prueba</string>
+    <string name="hacer_lista">Hacer lista</string>
+    <string name="ver_notas">Ver notas</string>
+    <string name="ver_listas">Ver listas</string>
+    <string name="hacer_nota">Hacer nota</string>
+    <string name="texto">texto</string>
+    <string name="hacer_foto">Hacer foto</string>
+    <string name="probar">probar</string>
+    <string name="title_activity_navigation_drawer">navigation_drawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
