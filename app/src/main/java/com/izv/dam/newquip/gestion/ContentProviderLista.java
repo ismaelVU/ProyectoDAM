@@ -128,11 +128,25 @@ public class ContentProviderLista extends ContentProvider {
 
                 case CONCRETO : {
 
-                    selection       = ContratoBaseDatos.TablaNota._ID + " = ?";
+                    String arbol_elementos =    ContratoBaseDatos.TablaNota.TABLA + " left join " +
+                                                ContratoBaseDatos.TablaLista.TABLA + " on " +
+                                                ContratoBaseDatos.TablaNota.TABLA + "." + ContratoBaseDatos.TablaNota._ID + " = " +
+                                                ContratoBaseDatos.TablaLista.TABLA + "." + ContratoBaseDatos.TablaLista.IDNOTA;
+
+                    String[] columns = {
+                            ContratoBaseDatos.TablaNota.TABLA + "." + ContratoBaseDatos.TablaNota._ID,
+                            ContratoBaseDatos.TablaNota.TITULO,
+                            ContratoBaseDatos.TablaNota.CUERPO, ContratoBaseDatos.TablaNota.TIPO,
+                            ContratoBaseDatos.TablaNota.IMAGEN,
+                            ContratoBaseDatos.TablaLista.TABLA + "." + ContratoBaseDatos.TablaLista._ID,
+                            ContratoBaseDatos.TablaLista.TEXTO, ContratoBaseDatos.TablaLista.CHECK,
+                            ContratoBaseDatos.TablaLista.IDNOTA
+                    };
+
+                    selection       = ContratoBaseDatos.TablaNota.TABLA + "." + ContratoBaseDatos.TablaNota._ID + " = ?";
                     selectionArgs   = new String[]{uri.getLastPathSegment()};
 
-                    c = gestor.getCursor(ContratoBaseDatos.TablaNota.TABLA, ContratoBaseDatos.TablaNota.PROJECTION_ALL,
-                            selection, selectionArgs, null, null, sortOrder);
+                    c = gestor.getCursor(arbol_elementos, columns, selection, selectionArgs, null, null, sortOrder);
 
                     break;
                 }
@@ -163,6 +177,7 @@ public class ContentProviderLista extends ContentProvider {
 
                 selection       = ContratoBaseDatos.TablaNota._ID + " = ?";
                 selectionArgs   = new String[]{id_lista+""};
+
 
                 gestor.update(values, selection, selectionArgs);
             }

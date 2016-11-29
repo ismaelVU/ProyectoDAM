@@ -20,6 +20,7 @@ public class ModeloQuip implements ContratoMain.InterfaceModelo {
 
     private Cursor cursor;
 
+
     public ModeloQuip(Context c) {
 
         /*gn = new GestionNota(c);
@@ -85,16 +86,17 @@ public class ModeloQuip implements ContratoMain.InterfaceModelo {
     @Override
     public Lista getLista(int position) {
 
-        cursor.moveToPosition(position);
+       /* cursor.moveToPosition(position);
 
-        return Lista.getLista(cursor);
+        return Lista.getLista(cursor);*/
 
         //Buscamos la lista con el id asignado y sus elementos
-        /*long id = cursor.getLong(cursor.getColumnIndex(ContratoBaseDatos.TablaNota._ID));
+        cursor.moveToPosition(position);
+        long id = cursor.getLong(cursor.getColumnIndex(ContratoBaseDatos.TablaNota._ID));
 
-        Lista lista = gl.get(id);
+        Cursor c = cr.query( ContentUris.withAppendedId(ContratoBaseDatos.URI_TABLA_LISTA, id), null, null, null, null);
 
-
-        return lista;*/
+        return Lista.getLista(c);
+        //return lista;
     }
 }

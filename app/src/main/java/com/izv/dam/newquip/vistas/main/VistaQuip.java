@@ -307,4 +307,25 @@ public class VistaQuip extends AppCompatActivity implements ContratoMain.Interfa
 
 
 
+
+    public Loader<Cursor> Cargar(int id, Bundle args) {
+
+        CursorLoader c = new CursorLoader( this, ContratoBaseDatos.URI_TABLA_LISTA, null, null, null, null);
+
+        return c;
+    }
+
+
+    public void a(Loader<Cursor> loader, Cursor data) {
+
+        adaptador.changeCursor(data);
+    }
+
+    public void b(Loader<Cursor> loader) {
+
+        adaptador.changeCursor(null);
+    }
+
+
+
 }//fin class

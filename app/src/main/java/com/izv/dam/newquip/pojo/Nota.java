@@ -27,6 +27,10 @@ public class Nota implements Parcelable {
         this.imagen=imagen;
     }
 
+    public Nota(String titulo,String cuerpo){
+        this.titulo=titulo;
+        this.cuerpo=cuerpo;
+    }
 
     protected Nota(Parcel in) {
         id = in.readLong();

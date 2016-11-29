@@ -131,22 +131,26 @@ public class Lista implements Parcelable {
 
         Lista objeto = new Lista();
 
-        //Tomamos el valor con la posicion ya que hay dos columnas que tienen el mismo nombre
-        objeto.setId(c.getLong(0));
-        objeto.setTitulo(c.getString(c.getColumnIndex(ContratoBaseDatos.TablaNota.TITULO)));
-        objeto.setTipo(c.getString(c.getColumnIndex(ContratoBaseDatos.TablaNota.TIPO)));
+        if ( c.moveToFirst() ) {
 
-        ArrayList<ElementoLista> itemsLista = new ArrayList();
+            //Tomamos el valor con la posicion ya que hay dos columnas que tienen el mismo nombre
+            objeto.setId(c.getLong(0));
+            objeto.setTitulo(c.getString(c.getColumnIndex(ContratoBaseDatos.TablaNota.TITULO)));
+            objeto.setTipo(c.getString(c.getColumnIndex(ContratoBaseDatos.TablaNota.TIPO)));
 
-        //Siempre le pasamos un cursor con sus datos no nos tenemos que preocupar por su tipo
-        do
-        {
-            ElementoLista elementoLista = ElementoLista.getElementoLista(c);
-            itemsLista.add(elementoLista);
+            ArrayList<ElementoLista> itemsLista = new ArrayList();
+
+            //Siempre le pasamos un cursor con sus datos no nos tenemos que preocupar por su tipo
+            do
+            {
+                ElementoLista elementoLista = ElementoLista.getElementoLista(c);
+                itemsLista.add(elementoLista);
+            }
+            while ( c.moveToNext()  );
+
+            objeto.setItems(itemsLista);
+
         }
-        while ( c.moveToNext()  );
-
-        objeto.setItems(itemsLista);
 
         return objeto;
     }

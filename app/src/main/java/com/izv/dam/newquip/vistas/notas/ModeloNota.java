@@ -48,7 +48,6 @@ public class ModeloNota implements ContratoNota.InterfaceModelo {
 
     private long deleteNota(Nota n) {
 
-        System.out.println(ContentUris.withAppendedId(ContratoBaseDatos.URI_TABLA_NOTA, n.getId()));
         return cr.delete(ContentUris.withAppendedId(ContratoBaseDatos.URI_TABLA_NOTA, n.getId()), null, null);
     }
 
@@ -70,7 +69,6 @@ public class ModeloNota implements ContratoNota.InterfaceModelo {
             return 0;
         }
 
-        System.out.println(ContentUris.withAppendedId(ContratoBaseDatos.URI_TABLA_NOTA, n.getId()));
         return cr.update( ContentUris.withAppendedId(ContratoBaseDatos.URI_TABLA_NOTA, n.getId()), n.getContentValues(), null, null);
         //return gn.update(n);
     }

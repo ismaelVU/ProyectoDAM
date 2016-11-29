@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -45,6 +46,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.izv.dam.newquip.R;
 import com.izv.dam.newquip.contrato.ContratoBaseDatos;
 import com.izv.dam.newquip.contrato.ContratoNota;
+import com.izv.dam.newquip.databinding.ActivityNotaBinding;
 import com.izv.dam.newquip.pojo.Nota;
 import com.izv.dam.newquip.util.Permisos;
 import com.izv.dam.newquip.util.UtilFecha;
@@ -80,6 +82,7 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
     private PresentadorNota presentador;
     private ImageView imagen;
 
+
     //Variables para la camara
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_GALLERY_CAPTURE = 2;
@@ -89,14 +92,12 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
     private static final String NOMBRE_DOCUMENTO= "prueba.pdf";
     private static final String NOMBRE_DIRECTORIO= "PDF/";
 
+    private ActivityNotaBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nota);
-
-        Toolbar toolbar2= (Toolbar) findViewById(R.id.toolbar2) ;
-        setSupportActionBar(toolbar2);
-
 
         presentador = new PresentadorNota(this);
 
@@ -112,6 +113,14 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
                 nota = b.getParcelable("nota");
             }
         }
+
+
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_nota);
+        binding.setNota(nota);
+
+        //Toolbar toolbar2= (Toolbar) findViewById(R.id.toolbar2) ;
+        setSupportActionBar(binding.toolbar2);
+
 
         mostrarNota(nota);
 
@@ -139,16 +148,17 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
 
     @Override
     public void mostrarNota(Nota n) {
-        editTextTitulo.setText(nota.getTitulo());
-        editTextNota.setText(nota.getCuerpo());
-        Picasso.with(this).load(Uri.parse(n.getImagen())).into(imagen);
-
+        /*editTextTitulo.setText(nota.getTitulo());
+        editTextNota.setText(nota.getCuerpo());*/
+        Picasso.with(this).load(Uri.parse(n.getImagen())).into(binding.imageView);
     }
 
     private void saveNota() {
 
+        /*binding.getNota();
+
         nota.setTitulo(editTextTitulo.getText().toString());
-        nota.setCuerpo(editTextNota.getText().toString());
+        nota.setCuerpo(editTextNota.getText().toString());*/
 
         long r = presentador.onSaveNota(nota);
         if (r > 0 & nota.getId() == 0) {
@@ -196,6 +206,7 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
                                     Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                                     if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                                         startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                                        System.out.println("mierdon");
                                     }
 
                                     break;
@@ -390,7 +401,7 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
                         @Override
                         protected void onPostExecute(Uri uri_imagen) {
 
-                            Picasso.with(VistaNota.this).load(uri_imagen).into(imagen);
+                            Picasso.with(VistaNota.this).load(uri_imagen).into(binding.imageView);
                             nota.setImagen(uri_imagen.toString());
 
                         }
@@ -450,7 +461,7 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
                     protected void onPostExecute(Uri uri_imagen) {
 
                         nota.setImagen(uri_imagen.toString());
-                        Picasso.with(VistaNota.this).load(uri_imagen).into(imagen);
+                        Picasso.with(VistaNota.this).load(uri_imagen).into(binding.imageView);
 
                     }
 
