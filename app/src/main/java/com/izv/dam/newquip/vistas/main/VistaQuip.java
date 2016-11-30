@@ -58,8 +58,12 @@ public class VistaQuip extends AppCompatActivity implements ContratoMain.Interfa
 
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_listas);
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_listas);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setNavigationIcon(R.mipmap.ic_navigation_drawer);
 
         drawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
         navegador = (NavigationView) findViewById(R.id.nav_view);
@@ -277,7 +281,17 @@ public class VistaQuip extends AppCompatActivity implements ContratoMain.Interfa
                 presentador.onAddLista();
             }
 
-        }
+            case android.R.id.home: {
+                if (drawerLayout.isDrawerOpen(navegador)) {
+                    drawerLayout.closeDrawers();
+                } else {
+                    drawerLayout.openDrawer( navegador);
+                }
+                return true;
+            }
+
+
+    }
 
         return false;
     }
@@ -305,26 +319,6 @@ public class VistaQuip extends AppCompatActivity implements ContratoMain.Interfa
     }
 
 
-
-
-
-    public Loader<Cursor> Cargar(int id, Bundle args) {
-
-        CursorLoader c = new CursorLoader( this, ContratoBaseDatos.URI_TABLA_LISTA, null, null, null, null);
-
-        return c;
-    }
-
-
-    public void a(Loader<Cursor> loader, Cursor data) {
-
-        adaptador.changeCursor(data);
-    }
-
-    public void b(Loader<Cursor> loader) {
-
-        adaptador.changeCursor(null);
-    }
 
 
 

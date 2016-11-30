@@ -8,8 +8,6 @@
     android:background="@color/colorPrimary"
     android:gravity="start"
     android:orientation="vertical"
-    android:padding="32px"
-    android:layout_marginTop="50px"
     app:insetForeground="#4000"
     android:fitsSystemWindows="true"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
@@ -18,7 +16,7 @@
 
 
     <ImageView
-        android:layout_width="44dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_menu_manage"
         android:id="@+id/imageView2"

@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
@@ -12,6 +13,8 @@ import com.izv.dam.newquip.R;
 import com.izv.dam.newquip.adaptadores.AdaptadorElementoLista;
 import com.izv.dam.newquip.contrato.ContratoListas;
 import com.izv.dam.newquip.pojo.Lista;
+
+import org.antlr.v4.Tool;
 
 
 /**
@@ -24,7 +27,7 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
     private FloatingActionButton fab;
     private RecyclerView rv;
     private AdaptadorElementoLista adapter;
-
+    private Toolbar toolbar_lista;
 
     private Lista lista = new Lista();
     private PresentadorLista presentador;
@@ -35,7 +38,11 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
+
+
         presentador     = new PresentadorLista(this);
+
+
 
         if(savedInstanceState != null){
 
@@ -52,6 +59,7 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
         }
 
         init();
+
 
         mostrarListas(lista);
     }
@@ -107,6 +115,8 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
         fab             = (FloatingActionButton) findViewById(R.id.fabAddLista);
         rv              = (RecyclerView) findViewById(R.id.rvLista);
         adapter         = new AdaptadorElementoLista(this);
+        toolbar_lista= (Toolbar) findViewById(R.id.toolbar_lista);
+
 
         adapter.setItems(lista.getItems());
 
@@ -119,6 +129,20 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
             public void onClick(View v) {
 
                 adapter.addItem();
+            }
+        });
+
+        setSupportActionBar(toolbar_lista);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar_lista.setNavigationIcon(R.drawable.ic_arrow_back_black_24px);
+
+
+        toolbar_lista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

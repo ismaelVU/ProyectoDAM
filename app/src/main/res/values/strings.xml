@@ -20,7 +20,8 @@
     <string name="hacer_foto">Hacer foto</string>
     <string name="probar">probar</string>
     <string name="title_activity_navigation_drawer">navigation_drawer</string>
-
+    <string name="camara">Camara</string>
+    <string name="pdf">Pdf</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
