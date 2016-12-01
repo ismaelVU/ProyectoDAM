@@ -2,32 +2,39 @@ package com.izv.dam.newquip.vistas.listas;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.izv.dam.newquip.R;
 import com.izv.dam.newquip.adaptadores.AdaptadorElementoLista;
 import com.izv.dam.newquip.contrato.ContratoListas;
 import com.izv.dam.newquip.pojo.Lista;
+import com.izv.dam.newquip.vistas.notas.VistaNota;
 
-import org.antlr.v4.Tool;
+//import org.antlr.v4.Tool;
 
 
 /**
  * Created by dam on 20/10/2016.
  */
 
-public class VistaListas extends AppCompatActivity implements ContratoListas.InterfaceVista {
+public class
+VistaListas extends AppCompatActivity implements ContratoListas.InterfaceVista {
 
     private EditText editTextTitulo;
     private FloatingActionButton fab;
     private RecyclerView rv;
     private AdaptadorElementoLista adapter;
     private Toolbar toolbar_lista;
+    private CheckBox controlar;
 
     private Lista lista = new Lista();
     private PresentadorLista presentador;
@@ -59,7 +66,6 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
         }
 
         init();
-
 
         mostrarListas(lista);
     }
@@ -145,6 +151,9 @@ public class VistaListas extends AppCompatActivity implements ContratoListas.Int
                 finish();
             }
         });
+
+
+
     }
 
 }

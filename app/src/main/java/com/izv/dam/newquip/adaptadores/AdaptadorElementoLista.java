@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.izv.dam.newquip.R;
 import com.izv.dam.newquip.pojo.ElementoLista;
@@ -98,8 +100,24 @@ public class AdaptadorElementoLista extends RecyclerView.Adapter<AdaptadorElemen
                     ElementoLista el = items.get(position);
                     el.setCheck(cb1.isChecked());
 
+
+
                 }
             });
+
+            cb1.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(cb1.isChecked()){
+                        edText.setEnabled(false);
+                    }else{
+                        edText.setEnabled(true);
+                    }
+                }
+            });
+
+
+
 
             edText.addTextChangedListener(new TextWatcher() {
                 @Override

@@ -9,7 +9,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/cbCheck"
-        android:layout_weight="0.5" />
+        android:layout_weight="0.5"
+        android:checked="false" />
 
     <EditText
         android:layout_width="0dp"

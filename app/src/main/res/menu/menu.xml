@@ -18,20 +18,7 @@
         android:icon="@drawable/ic_listas"
     />
 
-    <item
-        android:id="@+id/Ver_notas"
-        android:orderInCategory="100"
-        android:title="@string/ver_notas"
 
-        />
-
-
-    <item
-        android:id="@+id/Ver_listas"
-        android:orderInCategory="100"
-        android:title="@string/ver_listas"
-
-        />
 
 
 </menu>
