@@ -273,12 +273,13 @@ public class VistaQuip extends AppCompatActivity implements ContratoMain.Interfa
             case R.id.hacer_nota : {
 
                 presentador.onAddNota();
-
                 return true;
             }
 
             case R.id.hacer_lista:{
                 presentador.onAddLista();
+
+                return true;
             }
 
             case android.R.id.home: {

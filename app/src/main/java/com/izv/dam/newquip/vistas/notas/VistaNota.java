@@ -193,11 +193,14 @@ public class VistaNota extends AppCompatActivity implements ContratoNota.Interfa
                                     break;
                                 }
 
+
                                 case "Cancelar": {
 
                                     dialog.dismiss();
                                     break;
                                 }
+
+
                             }
 
                         }
