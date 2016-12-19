@@ -155,6 +155,7 @@ public class AdaptadorElementoLista extends RecyclerView.Adapter<AdaptadorElemen
 
             cb1.setChecked(el.isCheck());
             edText.setText(el.getTexto());
+            edText.requestFocus();
 
 
         }
